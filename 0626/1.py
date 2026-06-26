@@ -11,3 +11,4 @@ c = int(len(y))
 
 print(y)
 print(f'mean = {sum(y)/c}, sum = {sum(y)}, min = {min(y)}, max = {max(y)}')
+
