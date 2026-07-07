@@ -1,317 +1,86 @@
 # mycodehouse
 
-Python 수업에서 배운 기초 문법과 실습 코드를 복습하기 위해 정리한 저장소입니다.
+Python 수업과 부트캠프 실습 코드를 날짜별로 정리하는 개인 학습 저장소입니다.
 
-교재 기준: [점프 투 파이썬](https://wikidocs.net/book/1) 01장 ~ 04장 파이썬의 입출력까지
+기초 문법을 단순히 따라 치는 것에서 끝내지 않고, 입력/출력, 조건문, 반복문, 함수, 자료구조, 객체지향, GUI 프로그램, 외부 라이브러리, TTS, 머신러닝 기초까지 직접 실습한 내용을 기록합니다.
 
 ---
 
-## 0. 현재 학습 범위
+## 현재 학습 흐름
 
-| 날짜 | 범위 | 핵심 내용 |
+```text
+값 입력 → 자료형 변환 → 조건 판단 → 반복 처리 → 함수로 분리 → 파일/터미널 입출력 → 객체/클래스 → GUI 실습 → 외부 라이브러리 활용 → TTS → 머신러닝 기초와 시각화
+```
+
+| 날짜 | 학습 범위 | 핵심 키워드 |
 |---|---|---|
-| 2026-06-26 | Python 기초 문법 | 입력, 형변환, 문자열 포매팅, 리스트, 튜플, 세트, 딕셔너리, `if` 조건문 |
-| 2026-06-29 | 제어문 + 입출력 | `while`, `for`, `break`, `continue`, `range`, 별 찍기, 함수, 파일 입출력, `sys.argv` |
+| 2026-06-26 | Python 기초 문법 | `input`, `int`, `float`, `str`, f-string, 리스트, 인덱싱, 합계/평균 |
+| 2026-06-29 | 제어문과 함수 | `if`, `while`, `for`, `break`, `continue`, 중첩 반복문, 함수, `*args`, `**kwargs`, `match case`, 파일 입출력, `sys.argv` |
+| 2026-07-06 | 객체지향과 GUI | 클래스, 인스턴스 변수, 클래스 변수, `__init__`, `__str__`, `tkinter`, 메모장, 그림판, `numpy` 배열 |
+| 2026-07-07 | 외부 라이브러리와 머신러닝 기초 | `pip`, 가상환경, `gTTS`, TTS, `.mp3`, `pandas`, `scikit-learn`, Iris 데이터셋, SVM, `plotly` 3D 시각화 |
 
 ---
 
-## 1. 실습 파일 정리
+## 폴더 / 파일 구성
 
-| 파일/폴더 | 내용 |
+| 경로 | 내용 |
 |---|---|
 | `0622/` | 초기 Python 실습 파일 |
-| `0626/stringEx.py` | `input()`, `int()`, 사칙연산, f-string 출력 |
-| `0626/1.py` | 리스트 생성, 반복 입력, `append()`, 합계/평균/최솟값/최댓값 계산 |
-| `0626/2.py` | 문자열 리스트 입력, 리스트 출력, 인덱싱 실습 |
-| `0629/1.ipynb` | `while`, `for`, `continue`, `break`, 중첩 반복문, 별 찍기, 에러 유형 정리 |
-| `0629/2.ipynb` | 함수, `return`, `*args`, `**kwargs`, `match case`, 지역/전역 변수, 독스트링, 파일 입출력 |
-| `0629/34.py` | `while`문 나무 찍기 예제 |
-| `0629/sys1.py` | 명령행 인자 `sys.argv` 기본 출력 |
-| `0629/sys2.py` | 명령행 인자를 대문자로 변환해서 출력 |
-| `0629/sys_count.py` | 명령행 인자 개수 세기 |
-| `0629/sum_args.py` | 명령행 인자로 받은 숫자들의 합계 계산 |
-| `command.md` | 자주 쓰는 명령어 정리 |
-| `requirements.txt` | Python 실행 환경 패키지 목록 |
+| `0626/` | 입력, 형변환, 리스트, 문자열, 기초 통계 실습 |
+| `0629/` | 조건문, 반복문, 함수, 터미널 인자, 파일 입출력 실습 |
+| `0706/` | 객체지향, 클래스, `tkinter` 메모장/그림판, `numpy` 기초 실습 |
+| `0707/` | 외부 라이브러리, TTS, Iris 데이터셋, SVM 분류, 3D 시각화 실습 |
+| `source/` | 실습에 사용한 보조 소스 파일 폴더 |
+| `command.md` | 자주 쓰는 터미널/Git 명령어 정리 |
+| `requirements.txt` | Python 패키지 목록 정리용 파일 |
 
 ---
 
-# 시험 복습용 핵심 정리
+## 날짜별 README
 
-## 2. 입력과 형변환
-
-`input()`은 사용자가 입력한 값을 문자열로 받습니다.
-
-```python
-a = input("숫자를 입력하세요: ")
-print(type(a))  # str
-```
-
-숫자로 계산하려면 `int()` 또는 `float()`로 바꿔야 합니다.
-
-```python
-a = int(input("첫 번째 숫자: "))
-b = int(input("두 번째 숫자: "))
-
-print(a + b)
-```
-
-정리:
-
-| 코드 | 의미 |
-|---|---|
-| `input()` | 사용자 입력 받기 |
-| `int()` | 문자열을 정수로 변환 |
-| `float()` | 문자열을 실수로 변환 |
-| `str()` | 값을 문자열로 변환 |
-
-주의:
-
-```python
-money = int(input("돈을 넣어 주세요: "))
-```
-
-여기서 아무것도 입력하지 않고 엔터를 치면 `ValueError`가 날 수 있습니다. 빈 문자열 `''`은 정수로 바꿀 수 없기 때문입니다.
-
----
-
-## 3. 출력과 문자열 포매팅
-
-### 3-1. f-string
-
-```python
-name = "건태"
-age = 25
-
-print(f"이름: {name}, 나이: {age}")
-```
-
-`f""` 안의 `{}`에는 변수나 계산식을 넣을 수 있습니다.
-
-```python
-a = 3
-b = 4
-print(f"{a} + {b} = {a + b}")
-```
-
-### 3-2. `%` 포매팅
-
-```python
-treeHit = 3
-print("나무를 %d번 찍었습니다." % treeHit)
-```
-
-| 기호 | 의미 |
-|---|---|
-| `%d` | 정수 |
-| `%s` | 문자열 |
-| `%f` | 실수 |
-
-### 3-3. `print()`의 `end`
-
-`print()`는 기본적으로 출력 후 줄바꿈을 합니다.
-
-```python
-print("A")
-print("B")
-```
-
-출력:
-
-```text
-A
-B
-```
-
-줄바꿈 없이 출력하려면 `end`를 사용합니다.
-
-```python
-print("A", end=" ")
-print("B")
-```
-
-출력:
-
-```text
-A B
-```
-
----
-
-## 4. 자료형 정리
-
-| 자료형 | 예시 | 특징 |
+| 날짜 | README | 요약 |
 |---|---|---|
-| 숫자형 | `1`, `3.14` | 계산 가능 |
-| 문자열 | `"hello"` | 글자 데이터 |
-| 리스트 | `[1, 2, 3]` | 순서 있음, 값 변경 가능 |
-| 튜플 | `(1, 2, 3)` | 순서 있음, 값 변경 불가 |
-| 딕셔너리 | `{ "name": "kim" }` | key-value 구조 |
-| 세트 | `{1, 2, 3}` | 중복 제거, 순서 고정 아님 |
-| 불 | `True`, `False` | 참/거짓 |
+| 2026-06-26 | `0626/README.md` | Python 입력, 형변환, 리스트, 문자열 기초 |
+| 2026-06-29 | `0629/README.md` | 제어문, 반복문, 함수, 터미널 인자 처리 |
+| 2026-07-06 | `0706/README.md` | 객체지향과 GUI 프로그램 실습 |
+| 2026-07-07 | `0707/README.md` | TTS, 외부 라이브러리, 머신러닝 분류와 시각화 |
 
-### 리스트
+---
+
+## 주요 실습 내용
+
+### 1. Python 기초 문법
+
+`input()`으로 값을 입력받고, `int()`, `float()`, `str()`로 자료형을 변환하는 연습을 했습니다.
+
+```python
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+print(f"a + b = {a + b}")
+print(f"a - b = {a - b}")
+print(f"a * b = {a * b}")
+print(f"a / b = {a / b}")
+```
+
+리스트에 값을 저장하고 `sum`, `len`, `min`, `max`를 이용해 기본 통계를 계산했습니다.
 
 ```python
 numbers = []
-numbers.append(10)
-numbers.append(20)
 
-print(numbers)
+for i in range(5):
+    value = int(input("5개의 정수값을 입력하시오: "))
+    numbers.append(value)
+
+print(f"mean = {sum(numbers) / len(numbers)}")
+print(f"sum = {sum(numbers)}")
+print(f"min = {min(numbers)}")
+print(f"max = {max(numbers)}")
 ```
 
-자주 쓰는 함수:
+### 2. 조건문과 반복문
 
-| 함수 | 의미 |
-|---|---|
-| `append()` | 리스트 끝에 값 추가 |
-| `len()` | 길이 |
-| `sum()` | 합계 |
-| `min()` | 최솟값 |
-| `max()` | 최댓값 |
-| `sorted()` | 정렬된 결과 반환 |
-
-평균:
-
-```python
-scores = [80, 90, 100]
-avg = sum(scores) / len(scores)
-print(avg)
-```
-
-### 인덱싱
-
-```python
-fruits = ["apple", "banana", "melon"]
-
-print(fruits[0])   # apple
-print(fruits[-1])  # melon
-```
-
-Python 인덱스는 0부터 시작합니다.
-
----
-
-## 5. 조건문 `if`
-
-기본 구조:
-
-```python
-if 조건:
-    조건이 참일 때 실행
-elif 다른조건:
-    앞 조건이 거짓이고 다른조건이 참일 때 실행
-else:
-    모든 조건이 거짓일 때 실행
-```
-
-예시:
-
-```python
-score = 90
-
-if score >= 90:
-    print("A")
-elif score >= 80:
-    print("B")
-else:
-    print("F")
-```
-
-### 비교 연산자
-
-| 연산자 | 의미 |
-|---|---|
-| `==` | 같다 |
-| `!=` | 같지 않다 |
-| `>` | 크다 |
-| `<` | 작다 |
-| `>=` | 크거나 같다 |
-| `<=` | 작거나 같다 |
-
-### 논리 연산자
-
-| 연산자 | 의미 |
-|---|---|
-| `and` | 둘 다 참이면 참 |
-| `or` | 둘 중 하나라도 참이면 참 |
-| `not` | 참/거짓 반전 |
-
-### 윤년 판별 예제
-
-```python
-year = int(input("연도를 입력하세요: "))
-
-if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
-    print(f"{year}년은 윤년입니다.")
-else:
-    print(f"{year}년은 윤년이 아닙니다.")
-```
-
-핵심:
-
-```python
-%
-```
-
-`%`는 나머지를 구하는 연산자입니다.
-
----
-
-## 6. 반복문 `while`
-
-`while`은 조건이 참인 동안 반복합니다.
-
-```python
-treeHit = 0
-
-while treeHit < 10:
-    treeHit += 1
-    print("나무를 %d번 찍었습니다." % treeHit)
-
-    if treeHit == 10:
-        print("나무 넘어갑니다.")
-```
-
-흐름:
-
-```text
-treeHit = 0
-조건 검사: treeHit < 10
-참이면 반복문 내부 실행
-treeHit += 1
-다시 조건 검사
-```
-
-주의:
-
-```python
-print("나무를 %d번 찍었습니다." % treeHit)
-```
-
-이 코드가 `while` 밖에 있으면 반복이 끝난 뒤 한 번 더 출력됩니다.
-
-### `break`
-
-반복문을 강제로 끝냅니다.
-
-```python
-coffee = 10
-
-while True:
-    money = int(input("돈을 넣어 주세요: "))
-
-    if money == 300:
-        print("커피를 줍니다.")
-        coffee -= 1
-
-    if coffee == 0:
-        print("커피가 다 떨어졌습니다.")
-        break
-```
-
-### `continue`
-
-아래 코드를 건너뛰고 다음 반복으로 넘어갑니다.
+`if`, `while`, `for`, `break`, `continue`를 이용해 프로그램 흐름을 제어했습니다.
 
 ```python
 a = 0
@@ -323,472 +92,42 @@ while a < 10:
     print(a)
 ```
 
-출력:
-
-```text
-1
-3
-5
-7
-9
-```
-
----
-
-## 7. 반복문 `for`
-
-`for`는 리스트, 문자열, `range()` 같은 반복 가능한 객체를 하나씩 꺼내면서 반복합니다.
-
-```python
-for i in ["고", "저", "장", "단", "쉼"]:
-    print(i, end=" ")
-```
-
-출력:
-
-```text
-고 저 장 단 쉼
-```
-
-### `range()`
-
-```python
-for i in range(1, 11):
-    print(i)
-```
-
-| 코드 | 의미 |
+| 문법 | 의미 |
 |---|---|
-| `range(10)` | 0부터 9까지 |
-| `range(1, 11)` | 1부터 10까지 |
-| `range(1, 11, 2)` | 1부터 10까지 2씩 증가 |
-| `range(10, 0, -1)` | 10부터 1까지 감소 |
+| `break` | 반복문을 즉시 종료 |
+| `continue` | 아래 코드를 건너뛰고 다음 반복으로 이동 |
+| `while` | 조건이 참인 동안 반복 |
+| `for` | 반복 가능한 객체를 순서대로 꺼내며 반복 |
 
-### 합계 구하기
+### 3. 함수와 터미널 인자
 
-```python
-s = 0
-
-for i in range(1, 101):
-    s += i
-
-print(s)  # 5050
-```
-
-### 조건과 반복 같이 쓰기
-
-```python
-s = 0
-
-for i in range(1, 101):
-    if i % 2 == 1:
-        s += i
-
-print(s)  # 2500
-```
-
----
-
-## 8. 중첩 반복문
-
-반복문 안에 반복문이 들어갈 수 있습니다.
-
-```python
-i = 2
-
-while i <= 3:
-    j = 1
-    while j <= 9:
-        print(f"{i:3} x {j:3} = {i*j:3}")
-        j += 1
-    i += 1
-```
-
-바깥 반복문은 단을 담당하고, 안쪽 반복문은 1부터 9까지의 곱을 담당합니다.
-
----
-
-## 9. 별 찍기 패턴
-
-### 9-1. 기본 직각삼각형
-
-```python
-n = 5
-
-for i in range(1, n + 1):
-    for j in range(i):
-        print("*", end=" ")
-    print()
-```
-
-### 9-2. 반대 방향 직각삼각형
-
-```python
-n = 5
-
-for i in range(1, n + 1):
-    for j in range(n - i):
-        print(" ", end=" ")
-
-    for j in range(i):
-        print("*", end=" ")
-
-    print()
-```
-
-### 9-3. 정삼각형
-
-```python
-n = 5
-
-for i in range(1, n + 1):
-    for j in range(n - i):
-        print(" ", end=" ")
-
-    for j in range(2 * i - 1):
-        print("*", end=" ")
-
-    print()
-```
-
-핵심 공식:
-
-| 모양 | 공백 개수 | 별 개수 |
-|---|---|---|
-| 직각삼각형 | 없음 | `i` |
-| 반대 직각삼각형 | `n - i` | `i` |
-| 정삼각형 | `n - i` | `2 * i - 1` |
-| 마름모 위쪽 | `n - i` | `2 * i - 1` |
-| 마름모 아래쪽 | `n - i` | `2 * i - 1`, 단 `i`를 감소 |
-
-### 9-4. 마름모
-
-```python
-n = 5
-
-# 위쪽
-for i in range(1, n + 1):
-    for j in range(n - i):
-        print(" ", end=" ")
-
-    for j in range(2 * i - 1):
-        print("*", end=" ")
-
-    print()
-
-# 아래쪽
-for i in range(n - 1, 0, -1):
-    for j in range(n - i):
-        print(" ", end=" ")
-
-    for j in range(2 * i - 1):
-        print("*", end=" ")
-
-    print()
-```
-
----
-
-## 10. 함수
-
-함수는 자주 쓰는 코드를 이름 붙여 재사용하는 문법입니다.
+계산 로직을 함수로 분리하고, `return`으로 결과를 돌려받는 연습을 했습니다.
 
 ```python
 def add(a, b):
     return a + b
 
-result = add(3, 4)
-print(result)
-```
-
-구조:
-
-```python
-def 함수이름(매개변수):
-    실행할 코드
-    return 결과값
-```
-
-| 용어 | 의미 |
-|---|---|
-| 함수 | 기능을 묶어 둔 코드 |
-| 매개변수 | 함수가 값을 받을 때 쓰는 변수 |
-| 인수 | 함수를 호출할 때 실제로 넣는 값 |
-| `return` | 함수 결과를 밖으로 돌려줌 |
-
-### 여러 개의 입력값 받기: `*args`
-
-```python
-def addMany(*args):
-    result = 0
-    for i in args:
-        result += i
-    return result
-
-print(addMany(1, 2, 3, 4, 5))
-```
-
-`*args`는 여러 개의 값을 튜플처럼 받습니다.
-
-### 키워드 입력값 받기: `**kwargs`
-
-```python
-def print_kwargs(**kwargs):
-    print(kwargs)
-
-print_kwargs(name="홍길동", age=25)
-```
-
-출력:
-
-```text
-{'name': '홍길동', 'age': 25}
-```
-
-`**kwargs`는 key-value 형태의 값을 딕셔너리처럼 받습니다.
-
-### 여러 결과 반환
-
-```python
-def add_and_mul(a, b):
-    return a + b, a * b
-
-result = add_and_mul(3, 4)
-print(result)  # (7, 12)
-```
-
-Python 함수는 여러 값을 반환하면 튜플로 묶어서 반환합니다.
-
----
-
-## 11. 변수의 범위: 지역 변수와 전역 변수
-
-함수 안에서 만든 변수는 기본적으로 함수 안에서만 의미가 있습니다.
-
-```python
-a = 1
-
-def vartest(a):
-    a = a + 1
-    return a
-
-a = vartest(a)
-print(a)
-```
-
-`global`을 쓰면 함수 안에서 바깥 변수를 직접 바꿀 수 있습니다.
-
-```python
-a = 1
-
-def vartest():
-    global a
-    a = a + 1
-
-vartest()
-print(a)
-```
-
-하지만 복습 기준으로는 `global`보다 `return`으로 값을 돌려받는 방식을 먼저 익히는 것이 좋습니다.
-
----
-
-## 12. 독스트링
-
-독스트링은 함수 설명문입니다.
-
-```python
-def add(a, b):
-    """
-    두 숫자를 더하는 함수
-
-    Parameters:
-    a: 첫 번째 숫자
-    b: 두 번째 숫자
-
-    Returns:
-    두 숫자의 합
-    """
-    return a + b
-
-print(add.__doc__)
-print(add.__name__)
-```
-
-| 코드 | 의미 |
-|---|---|
-| `함수.__doc__` | 함수 설명문 확인 |
-| `함수.__name__` | 함수 이름 확인 |
-
----
-
-## 13. `match case`
-
-`match case`는 여러 경우 중 하나를 선택할 때 사용합니다.
-
-```python
-choice = input("Enter choice (1/2/3/4): ")
-
-match choice:
-    case '1':
-        print("Add")
-    case '2':
-        print("Subtract")
-    case '3':
-        print("Multiply")
-    case '4':
-        print("Divide")
-    case _:
-        print("Invalid input")
-```
-
-`case _:`는 `if-elif-else`의 `else`와 비슷합니다.
-
-계산기 예시:
-
-```python
-def add(a, b):
-    return a + b
 
 def subtract(a, b):
     return a - b
 
+
 def multiply(a, b):
     return a * b
+
 
 def divide(a, b):
     if b == 0:
         return "Error: Division by zero"
     return a / b
-
-choice = input("Enter choice (1/2/3/4): ")
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
-
-match choice:
-    case '1':
-        print(add(num1, num2))
-    case '2':
-        print(subtract(num1, num2))
-    case '3':
-        print(multiply(num1, num2))
-    case '4':
-        print(divide(num1, num2))
-    case _:
-        print("Invalid input")
 ```
 
----
-
-## 14. 파일 입출력
-
-파일을 만들거나 쓰려면 `open()`을 사용합니다.
+`sys.argv`를 이용해 터미널에서 넘긴 값을 Python 코드 안에서 처리했습니다.
 
 ```python
-f = open("새파일.txt", "w", encoding="utf-8")
-f.write("안녕하세요, 파이썬!")
-f.close()
-```
-
-| 모드 | 의미 |
-|---|---|
-| `"w"` | 쓰기 모드. 기존 내용은 덮어씀 |
-| `"r"` | 읽기 모드 |
-| `"a"` | 추가 모드. 기존 내용 뒤에 추가 |
-
-### `encoding="utf-8"`
-
-UTF-8은 글자를 파일에 저장할 때 쓰는 문자 인코딩 방식입니다.
-
-한글을 파일에 저장하거나 읽을 때는 다음처럼 쓰는 것이 안전합니다.
-
-```python
-f = open("새파일.txt", "w", encoding="utf-8")
-f.write("안녕하세요")
-f.close()
-```
-
-읽기:
-
-```python
-f = open("새파일.txt", "r", encoding="utf-8")
-data = f.read()
-f.close()
-
-print(data)
-```
-
-### 폴더가 없을 때 자동 생성
-
-```python
-import os
-
-os.makedirs("C:/doit", exist_ok=True)
-
-f = open("C:/doit/새파일.txt", "w", encoding="utf-8")
-f.close()
-```
-
-`exist_ok=True`는 폴더가 이미 있어도 에러가 나지 않게 합니다.
-
----
-
-## 15. 프로그램의 입출력: `sys.argv`
-
-`sys.argv`는 터미널에서 파이썬 파일을 실행할 때 같이 넘긴 값을 코드 안에서 받는 방법입니다.
-
-```python
-# sys1.py
 import sys
 
 args = sys.argv[1:]
-
-for i in args:
-    print(i)
-```
-
-실행:
-
-```powershell
-python sys1.py hello python 123
-```
-
-출력:
-
-```text
-hello
-python
-123
-```
-
-핵심:
-
-| 코드 | 의미 |
-|---|---|
-| `sys.argv[0]` | 실행한 파일 이름 |
-| `sys.argv[1]` | 첫 번째 인자 |
-| `sys.argv[1:]` | 파일 이름을 제외한 나머지 인자 전체 |
-
-### 인자 개수 세기
-
-```python
-# sys_count.py
-import sys
-
-args = sys.argv[1:]
-
-print("입력한 값들:", args)
-print("입력한 개수:", len(args))
-```
-
-### 숫자 합계 구하기
-
-```python
-# sum_args.py
-import sys
-
-args = sys.argv[1:]
-
 total = 0
 
 for i in args:
@@ -797,114 +136,189 @@ for i in args:
 print("합계:", total)
 ```
 
-실행:
+### 4. 객체지향과 GUI
+
+`class`를 이용해 관련 있는 데이터와 기능을 하나로 묶는 연습을 했습니다.
+
+```python
+class Television:
+    serial_number = 0
+
+    def __init__(self, channel, volume, on):
+        Television.serial_number += 1
+        self.serial_number = Television.serial_number
+        self.channel = channel
+        self.volume = volume
+        self.on = on
+
+    def __str__(self):
+        return f"Television(channel={self.channel}, volume={self.volume}, on={self.on})"
+```
+
+`tkinter`를 이용해서 메모장과 그림판 형태의 GUI 프로그램도 실습했습니다.
+
+주요 기능:
+
+- 새 파일 만들기
+- 파일 열기
+- 저장 / 다른 이름으로 저장
+- 잘라내기 / 복사 / 붙여넣기
+- 전체 선택
+- 그림판 색상 선택
+- 지우개 기능
+- 선 굵기 조절
+- 캔버스 지우기
+
+### 5. 외부 라이브러리와 TTS
+
+Python 기본 기능만으로 부족한 기능은 외부 라이브러리를 설치해서 사용했습니다.
 
 ```powershell
-python sum_args.py 10 20 30
+pip install gtts
 ```
 
-출력:
+`gTTS`를 이용해 텍스트를 `.mp3` 음성 파일로 저장하는 TTS 실습을 했습니다.
 
-```text
-합계: 60
+```python
+from gtts import gTTS
+
+text = "오늘 배운 내용을 음성으로 저장합니다."
+tts = gTTS(text=text, lang="ko")
+tts.save("news_Son.mp3")
 ```
 
-`sys.argv`로 들어오는 값은 문자열이므로 숫자 계산을 하려면 `int()` 또는 `float()`로 바꿔야 합니다.
+이 과정에서 `pip install`, 가상환경, 패키지 설치 오류, 생성 파일 관리의 필요성을 함께 확인했습니다.
+
+### 6. 머신러닝 기초와 시각화
+
+`scikit-learn`의 Iris 데이터셋을 이용해 SVM 분류 모델을 학습하고 새로운 샘플을 예측했습니다.
+
+```python
+import pandas as pd
+import plotly.express as px
+from sklearn.datasets import load_iris
+from sklearn import svm
+
+iris = load_iris()
+
+df = pd.DataFrame(
+    iris.data,
+    columns=['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
+)
+
+df['target'] = iris.target
+df['species'] = df['target'].apply(lambda x: iris.target_names[x])
+
+s = svm.SVC(gamma=0.1, C=10)
+s.fit(iris.data, iris.target)
+
+new_d = [
+    [6.4, 3.2, 6.0, 2.5],
+    [7.1, 3.1, 4.7, 1.35]
+]
+
+res = s.predict(new_d)
+
+print("새로운 2개 샘플의 부류 번호는", res)
+print("새로운 2개 샘플의 부류 이름은", iris.target_names[res])
+
+fig = px.scatter_3d(
+    df,
+    x='sepal_length',
+    y='sepal_width',
+    z='petal_width',
+    color='species'
+)
+
+fig.show(renderer="browser")
+```
+
+오늘 발생한 핵심 오류는 `pandas`와 `plotly`의 역할을 혼동한 것이었습니다.
+
+```python
+df = pd.data.iris()
+fig = pd.scatter_3d(...)
+```
+
+위 코드는 동작하지 않습니다. `pandas`는 표 형태 데이터 처리용이고, 3D 그래프는 `plotly.express`의 `px.scatter_3d()`를 사용해야 합니다.
 
 ---
 
-## 16. 에러 유형
+## 실행 방법
 
-| 에러 유형 | 의미 | 예시 |
-|---|---|---|
-| Syntax Error | 문법 자체가 틀림 | 괄호 빠짐, 이상한 문자 입력 |
-| Runtime Error | 실행 중 문제 발생 | 0으로 나누기, 잘못된 형변환 |
-| Semantic Error | 실행은 되지만 의도와 다른 결과 | 연산자 잘못 사용 |
+### 1. 저장소 내려받기
 
-### 전각 문자 오류
-
-```python
-print("*", end=" ")１２３
+```powershell
+git clone https://github.com/rjsxo943-gif/mycodehouse.git
+cd mycodehouse
 ```
 
-이런 식으로 코드 뒤에 전각 숫자나 전각 영어가 들어가면 오류가 납니다.
+### 2. 가상환경 생성 및 실행
 
-정상:
-
-```python
-print("*", end=" ")
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 ```
 
-코딩할 때는 입력 상태가 `Ａ`가 아니라 `A`인지 확인하는 것이 좋습니다.
+### 3. Python 파일 실행
+
+```powershell
+python 0626/stringEx.py
+python 0629/sum_args.py 10 20 30
+```
+
+### 4. 노트북 실행
+
+VS Code에서 `.ipynb` 파일을 열거나 Jupyter를 사용할 수 있습니다.
+
+```powershell
+jupyter notebook
+```
+
+### 5. 필요한 패키지 설치 예시
+
+```powershell
+pip install numpy pandas scikit-learn plotly gtts
+```
 
 ---
 
-## 17. VS Code 디버깅 기본
+## 복습 체크리스트
 
-반복문이 한 번에 끝나는 것이 아니라 한 줄씩 보고 싶으면 브레이크포인트를 사용합니다.
-
-| 키 | 의미 |
-|---|---|
-| `F5` | 디버그 시작 / 다음 브레이크포인트까지 실행 |
-| `F10` | 한 줄씩 실행 |
-| `F11` | 함수 안으로 들어가기 |
-| `Shift + F5` | 디버그 종료 |
-
-반복문 디버깅 예시:
-
-```python
-treeHit = 0
-
-while treeHit < 10:
-    treeHit += 1
-    print("나무를 %d번 찍었습니다." % treeHit)
-```
-
-`treeHit += 1` 줄 왼쪽에 빨간 점을 찍고 `F5`를 누른 뒤 `F10`으로 한 줄씩 보면 `treeHit` 값이 `0 -> 1 -> 2 ...`로 바뀌는 것을 볼 수 있습니다.
-
----
-
-# 시험 전 체크리스트
-
-## 반드시 설명할 수 있어야 하는 것
+아래 항목을 설명할 수 있으면 현재 저장소의 기초 학습 흐름을 어느 정도 이해한 것입니다.
 
 - `input()`으로 받은 값이 왜 문자열인지
-- `int()`와 `float()`를 언제 쓰는지
-- 리스트와 튜플의 차이
-- 리스트 인덱스가 왜 0부터 시작하는지
+- `int()`, `float()`, `str()`의 차이
+- 리스트에 값을 추가하고 꺼내는 방법
 - `if`, `elif`, `else`의 실행 순서
 - `while`과 `for`의 차이
 - `break`와 `continue`의 차이
-- `range(1, 10)`이 왜 1부터 9까지인지
-- 중첩 반복문에서 바깥 반복문과 안쪽 반복문의 역할
 - 함수에서 `return`이 하는 일
 - `*args`와 `**kwargs`의 차이
-- 지역 변수와 전역 변수의 차이
-- 파일 열기 모드 `w`, `r`, `a`의 차이
-- `encoding="utf-8"`을 쓰는 이유
-- `sys.argv[1:]`가 의미하는 것
+- `sys.argv[1:]`의 의미
+- 클래스와 객체의 차이
+- `self`와 `__init__`의 역할
+- 클래스 변수와 인스턴스 변수의 차이
+- `tkinter`로 GUI 창을 만드는 기본 구조
+- `pip install`과 `import`의 차이
+- 가상환경을 쓰는 이유
+- TTS가 무엇인지
+- `fit()`과 `predict()`의 차이
+- `pandas`, `scikit-learn`, `plotly`의 역할 차이
 
-## 손코딩으로 연습할 문제
+---
 
-1. 숫자 5개를 입력받아 합계와 평균 출력하기
-2. 점수를 입력받아 A/B/C/F 학점 출력하기
-3. 1부터 100까지 합 구하기
-4. 1부터 100까지 홀수의 합 구하기
-5. 6의 배수만 더하기
-6. 구구단 2단부터 9단까지 출력하기
-7. 별로 직각삼각형 출력하기
-8. 별로 정삼각형 출력하기
-9. `add`, `subtract`, `multiply`, `divide` 함수로 계산기 만들기
-10. `sys.argv`로 숫자를 받아 합계 출력하기
+## 다음 개선 예정
+
+- 날짜별 폴더마다 간단한 `README.md` 유지
+- 노트북 실습 중 완성도가 높은 코드는 `.py` 파일로 분리
+- `requirements.txt`에 실제 필요한 패키지 정리
+- GUI 예제를 실행 가능한 단일 Python 파일로 정리
+- Git/GitHub 명령어 실수 기록과 해결법 정리
+- `.mp3` 같은 생성 결과물을 Git에 계속 올릴지 기준 정리
 
 ---
 
 ## 한 줄 요약
 
-지금까지 배운 흐름은 다음과 같습니다.
-
-```text
-값 입력 -> 자료형 변환 -> 조건 판단 -> 반복 처리 -> 함수로 묶기 -> 파일/터미널과 입출력하기
-```
-
-이 흐름을 이해하면 점프 투 파이썬 04장까지의 핵심은 거의 잡은 것입니다.
+이 저장소는 Python 기초 문법에서 시작해 함수, 터미널 입출력, 객체지향, GUI 프로그램, 외부 라이브러리, TTS, 머신러닝 기초까지 확장해 가는 개인 실습 기록입니다.
